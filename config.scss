@@ -1,0 +1,7 @@
+$gridi-components-navbar-hideable-transition: 'transform 0.4s cubic-bezier(0.3, 0.03, 0.515, 0.955) 0ms';
+//Defined logo max height for each screens.
+$gridi-components-navbar-hideable-transition-duration-for-screens: (
+    s5: 0.5s
+) !default;
+
+$gridi-components-navbar-hideable-no-hide-when-hover-limit-screen-size-prefix: $gridi-components-navbar-mobile-limit-screen-size-prefix !default;

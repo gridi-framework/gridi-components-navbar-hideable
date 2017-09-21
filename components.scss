@@ -1,0 +1,35 @@
+.navbar {
+    &.navbar-hideable {
+        @include transition($gridi-components-navbar-hideable-transition);
+        @if is-map($gridi-components-navbar-hideable-transition-duration-for-screens) {
+            @each $screen-prefix, $sizes in get-screens-map() {
+                @if map-has-key($gridi-components-navbar-hideable-transition-duration-for-screens, $screen-prefix) {
+                    @media(min-width: get-screen-size($screen-prefix, min)) {
+                        @include transition-duration(map-get($gridi-components-navbar-hideable-transition-duration-for-screens, $screen-prefix));
+                    }
+                }
+            }
+        }
+
+        &.navbar-hide {
+            @include transform(translateY(-100%));
+
+            &:hover {
+                @if $gridi-components-navbar-hideable-no-hide-when-hover-limit-screen-size-prefix {
+                    @media(min-width: get-screen-size($gridi-components-navbar-hideable-no-hide-when-hover-limit-screen-size-prefix, min)) {
+                        @include transform(none);
+                    }
+                } @else {
+                    @include transform(none);
+                }
+            }
+
+            &.navbar-fixed,
+            &.navbar-absolute {
+                &.navbar-bottom {
+                    @include transform(none);
+                }
+            }
+        }
+    }
+}
